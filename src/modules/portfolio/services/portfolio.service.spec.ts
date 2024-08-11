@@ -50,7 +50,7 @@ describe('PortfolioService', () => {
       const mockItem: PortfolioItem = {
         title: 'Test Artwork',
         description: 'A description',
-        imageUrl: 'https://example.com/image.jpg',
+        imageFilename: 'https://example.com/image.jpg',
         clientLink: 'https://clientwebsite.com',
         status: 'visible',
       };
@@ -72,7 +72,7 @@ describe('PortfolioService', () => {
       const mockItem: PortfolioItem = {
         title: 'Test Artwork',
         description: 'A description',
-        imageUrl: 'https://example.com/image.jpg',
+        imageFilename: 'https://example.com/image.jpg',
         clientLink: 'https://clientwebsite.com',
         status: 'visible',
       };
@@ -92,7 +92,7 @@ describe('PortfolioService', () => {
       const mockItem: PortfolioItem = {
         title: 'Test Artwork',
         description: 'A description',
-        imageUrl: 'https://example.com/image.jpg',
+        imageFilename: 'https://example.com/image.jpg',
         clientLink: 'https://clientwebsite.com',
         status: 'visible',
       };
@@ -125,7 +125,7 @@ describe('PortfolioService', () => {
           id: mockId,
           title: 'Test Artwork 1',
           description: 'A description 1',
-          imageUrl: 'https://example.com/image1.jpg',
+          imageFilename: 'https://example.com/image1.jpg',
           clientLink: 'https://clientwebsite.com',
           status: 'visible',
         },
@@ -133,7 +133,7 @@ describe('PortfolioService', () => {
           id: 'AnotherFirestoreID', // Another example Firestore ID
           title: 'Test Artwork 2',
           description: 'A description 2',
-          imageUrl: 'https://example.com/image2.jpg',
+          imageFilename: 'https://example.com/image2.jpg',
           clientLink: 'https://clientwebsite.com',
           status: 'hidden',
         },
@@ -171,6 +171,7 @@ describe('PortfolioService', () => {
     it('should delete a portfolio item if it exists', async () => {
       (getDoc as jest.Mock).mockResolvedValue({
         exists: () => true, // Simulate the document exists
+        data: () => ({}),  // Mock the data function to return an empty object or mock data
       });
 
       (deleteDoc as jest.Mock).mockResolvedValueOnce(undefined);
@@ -192,6 +193,7 @@ describe('PortfolioService', () => {
     it('should throw an InternalServerErrorException if deletion fails', async () => {
       (getDoc as jest.Mock).mockResolvedValue({
         exists: () => true, // Simulate the document exists
+        data: () => ({}),  // Mock the data function to return an empty object or mock data
       });
 
       (deleteDoc as jest.Mock).mockRejectedValue(new Error('Deletion failed'));

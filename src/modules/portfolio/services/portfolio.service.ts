@@ -2,6 +2,8 @@ import { Injectable, Logger, NotFoundException, InternalServerErrorException, Co
 import { FirebaseService } from '../../../config/firebase.service';
 import { PortfolioItem } from '../entities/portfolio-item.entity';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, getDoc, query, where } from 'firebase/firestore';
+import { unlinkSync } from 'fs';
+import { join } from 'path';
 
 @Injectable()
 export class PortfolioService {
@@ -19,27 +21,27 @@ export class PortfolioService {
     async createPortfolioItem(item: PortfolioItem): Promise<void> {
         const firestore = this.firebaseService.getFirestore();
         const collectionRef = collection(firestore, this.collectionName);
-
+    
         try {
-        // Check for duplicates by querying the collection for items with the same title
-        const duplicateQuery = query(collectionRef, where('title', '==', item.title));
-        const duplicateSnapshot = await getDocs(duplicateQuery);
-
-        if (!duplicateSnapshot.empty) {
-            this.logger.warn(`A portfolio item with the title "${item.title}" already exists.`);
-            throw new ConflictException(`A portfolio item with the title "${item.title}" already exists.`);
-        }
-
-        // If no duplicates found, proceed to add the new item
-        const docRef = await addDoc(collectionRef, item);
-        this.logger.log(`Portfolio item created successfully with ID: ${docRef.id}`);
+            // Check for duplicates by querying the collection for items with the same title
+            const duplicateQuery = query(collectionRef, where('title', '==', item.title));
+            const duplicateSnapshot = await getDocs(duplicateQuery);
+    
+            if (!duplicateSnapshot.empty) {
+                this.logger.warn(`A portfolio item with the title "${item.title}" already exists.`);
+                throw new ConflictException(`A portfolio item with the title "${item.title}" already exists.`);
+            }
+    
+            // If no duplicates found, proceed to add the new item
+            const docRef = await addDoc(collectionRef, item);
+            this.logger.log(`Portfolio item created successfully with ID: ${docRef.id}`);
         } catch (error) {
-        this.logger.error('Failed to create portfolio item', error.stack);
-        if (error instanceof ConflictException) {
-            throw error; // Re-throw conflict exception
-        } else {
-            throw new InternalServerErrorException('Failed to create portfolio item');
-        }
+            this.logger.error('Failed to create portfolio item', error.stack);
+            if (error instanceof ConflictException) {
+                throw error; // Re-throw conflict exception
+            } else {
+                throw new InternalServerErrorException('Failed to create portfolio item');
+            }
         }
     }
 
@@ -76,13 +78,13 @@ export class PortfolioService {
      */
     async updatePortfolioItem(id: string, item: Partial<PortfolioItem>): Promise<void> {
         try {
-        const firestore = this.firebaseService.getFirestore();
-        const docRef = doc(firestore, this.collectionName, id);
-        await updateDoc(docRef, item);
-        this.logger.log(`Portfolio item updated successfully: ${id}`);
+            const firestore = this.firebaseService.getFirestore();
+            const docRef = doc(firestore, this.collectionName, id);
+            await updateDoc(docRef, item);
+            this.logger.log(`Portfolio item updated successfully: ${id}`);
         } catch (error) {
-        this.logger.error(`Failed to update portfolio item with ID: ${id}`, error.stack);
-        throw new InternalServerErrorException(`Failed to update portfolio item with ID: ${id}`);
+            this.logger.error(`Failed to update portfolio item with ID: ${id}`, error.stack);
+            throw new InternalServerErrorException(`Failed to update portfolio item with ID: ${id}`);
         }
     }
 
@@ -101,6 +103,14 @@ export class PortfolioService {
             if (!docSnap.exists()) {
                 this.logger.warn(`Portfolio item not found: ${id}`);
                 throw new NotFoundException(`Portfolio item not found: ${id}`);
+            }
+
+            const item = docSnap.data() as PortfolioItem;
+            
+            // Delete the image file if it exists
+            if (item.imageFilename) {
+                const imagePath = join(__dirname, '..', '..', '..', 'uploads', item.imageFilename);
+                unlinkSync(imagePath); // Deletes the file from the server
             }
 
             await deleteDoc(docRef);

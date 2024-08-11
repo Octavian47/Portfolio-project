@@ -1,4 +1,4 @@
-import { IsString, IsUrl, IsOptional } from 'class-validator';
+import { IsString, IsOptional } from 'class-validator';
 
 export class PortfolioItem {
   @IsString()
@@ -7,10 +7,10 @@ export class PortfolioItem {
   @IsString()
   description: string;
 
-  @IsUrl()
-  imageUrl: string;
+  @IsString()
+  imageFilename: string; 
 
-  @IsUrl()
+  @IsString()
   @IsOptional()
   clientLink?: string;
 

@@ -3,6 +3,7 @@ import { PortfolioController } from './portfolio.controller';
 import { PortfolioService } from '../services/portfolio.service';
 import { PortfolioItem } from '../entities/portfolio-item.entity';
 import { NotFoundException } from '@nestjs/common';
+import { Express } from 'express';
 
 describe('PortfolioController', () => {
   let controller: PortfolioController;
@@ -12,7 +13,7 @@ describe('PortfolioController', () => {
   const mockPortfolioItem: PortfolioItem = {
     title: 'Test Artwork',
     description: 'A description',
-    imageUrl: 'https://example.com/image.jpg',
+    imageFilename: 'uploads/test-image.jpg', // Change this to match your updated entity
     clientLink: 'https://clientwebsite.com',
     status: 'visible',
   };
@@ -44,13 +45,32 @@ describe('PortfolioController', () => {
 
   describe('create', () => {
     it('should create a portfolio item', async () => {
-      const result = await controller.create(mockPortfolioItem);
+      const mockFile: Express.Multer.File = {
+        originalname: 'test-image.jpg',
+        filename: 'test-image.jpg',
+        mimetype: 'image/jpeg',
+        buffer: Buffer.from(''),
+        size: 1024,
+        stream: undefined,
+        destination: '',
+        path: '',
+        fieldname: '',
+        encoding: '',
+      };
 
-      expect(service.createPortfolioItem).toHaveBeenCalledWith(mockPortfolioItem);
+      const result = await controller.create(mockPortfolioItem, mockFile);
+
+      expect(service.createPortfolioItem).toHaveBeenCalledWith({
+        ...mockPortfolioItem,
+        imageFilename: `/uploads/${mockFile.filename}`,
+      });
       expect(result).toEqual({
         status: 'success',
         message: 'Portfolio item created successfully',
-        data: mockPortfolioItem,
+        data: {
+          ...mockPortfolioItem,
+          imageFilename: `/uploads/${mockFile.filename}`,
+        },
       });
     });
   });
