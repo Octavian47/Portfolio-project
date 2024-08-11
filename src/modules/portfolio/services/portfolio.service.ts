@@ -86,22 +86,35 @@ export class PortfolioService {
         }
     }
 
-    /**
+   /**
      * Deletes a portfolio item by its ID.
      * @param id - The ID of the portfolio item to delete.
+     * @throws NotFoundException if the item is not found.
      * @throws InternalServerErrorException if the deletion fails.
      */
     async deletePortfolioItem(id: string): Promise<void> {
         try {
-        const firestore = this.firebaseService.getFirestore();
-        const docRef = doc(firestore, this.collectionName, id);
-        await deleteDoc(docRef);
-        this.logger.log(`Portfolio item deleted successfully: ${id}`);
+            const firestore = this.firebaseService.getFirestore();
+            const docRef = doc(firestore, this.collectionName, id);
+            const docSnap = await getDoc(docRef);
+
+            if (!docSnap.exists()) {
+                this.logger.warn(`Portfolio item not found: ${id}`);
+                throw new NotFoundException(`Portfolio item not found: ${id}`);
+            }
+
+            await deleteDoc(docRef);
+            this.logger.log(`Portfolio item deleted successfully: ${id}`);
         } catch (error) {
-        this.logger.error(`Failed to delete portfolio item with ID: ${id}`, error.stack);
-        throw new InternalServerErrorException(`Failed to delete portfolio item with ID: ${id}`);
+            this.logger.error(`Failed to delete portfolio item with ID: ${id}`, error.stack);
+            if (error instanceof NotFoundException) {
+                throw error; // Re-throw the NotFoundException as is
+            } else {
+                throw new InternalServerErrorException(`Failed to delete portfolio item with ID: ${id}`);
+            }
         }
     }
+
 
     /**
      * Retrieves a single portfolio item by its ID.
@@ -114,11 +127,10 @@ export class PortfolioService {
             const firestore = this.firebaseService.getFirestore();
             const docRef = doc(firestore, this.collectionName, id);
             const docSnap = await getDoc(docRef);
-
+    
             if (docSnap.exists()) {
                 const data = docSnap.data() as PortfolioItem;
                 this.logger.log(`Portfolio item fetched successfully: ${id}`);
-                // Use type assertion to indicate that the object includes the id
                 return { id, ...data } as PortfolioItem;
             } else {
                 this.logger.warn(`Portfolio item not found: ${id}`);
@@ -126,7 +138,12 @@ export class PortfolioService {
             }
         } catch (error) {
             this.logger.error(`Failed to fetch portfolio item with ID: ${id}`, error.stack);
-            throw new InternalServerErrorException(`Failed to fetch portfolio item with ID: ${id}`);
+            if (error instanceof NotFoundException) {
+                throw error; // Re-throw the NotFoundException as is
+            } else {
+                throw new InternalServerErrorException(`Failed to fetch portfolio item with ID: ${id}`);
+            }
         }
     }
+    
 }
