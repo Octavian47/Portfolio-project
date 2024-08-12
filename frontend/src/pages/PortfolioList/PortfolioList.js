@@ -10,7 +10,9 @@ const PortfolioList = () => {
     const fetchItems = async () => {
       try {
         const items = await getPortfolioItems();
-        setPortfolioItems(items);
+        // Filter items to only show those that are 'visible'
+        const visibleItems = items.filter(item => item.status === 'visible');
+        setPortfolioItems(visibleItems);
       } catch (error) {
         console.error('Failed to fetch portfolio items:', error);
       }

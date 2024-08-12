@@ -2,7 +2,7 @@ import { Injectable, Logger, NotFoundException, InternalServerErrorException, Co
 import { FirebaseService } from '../../../config/firebase.service';
 import { PortfolioItem } from '../entities/portfolio-item.entity';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, getDoc, query, where } from 'firebase/firestore';
-import { unlinkSync } from 'fs';
+import { unlinkSync,existsSync } from 'fs';
 import { join } from 'path';
 
 @Injectable()
@@ -94,36 +94,50 @@ export class PortfolioService {
      * @throws NotFoundException if the item is not found.
      * @throws InternalServerErrorException if the deletion fails.
      */
-    async deletePortfolioItem(id: string): Promise<void> {
-        try {
-            const firestore = this.firebaseService.getFirestore();
-            const docRef = doc(firestore, this.collectionName, id);
-            const docSnap = await getDoc(docRef);
+   async deletePortfolioItem(id: string): Promise<void> {
+    try {
+        const firestore = this.firebaseService.getFirestore();
+        const docRef = doc(firestore, this.collectionName, id);
+        const docSnap = await getDoc(docRef);
 
-            if (!docSnap.exists()) {
-                this.logger.warn(`Portfolio item not found: ${id}`);
-                throw new NotFoundException(`Portfolio item not found: ${id}`);
-            }
+        if (!docSnap.exists()) {
+            this.logger.warn(`Portfolio item not found: ${id}`);
+            throw new NotFoundException(`Portfolio item not found: ${id}`);
+        }
 
-            const item = docSnap.data() as PortfolioItem;
-            
-            // Delete the image file if it exists
-            if (item.imageFilename) {
-                const imagePath = join(__dirname, '..', '..', '..', 'uploads', item.imageFilename);
-                unlinkSync(imagePath); // Deletes the file from the server
-            }
+        const item = docSnap.data() as PortfolioItem;
 
-            await deleteDoc(docRef);
-            this.logger.log(`Portfolio item deleted successfully: ${id}`);
-        } catch (error) {
-            this.logger.error(`Failed to delete portfolio item with ID: ${id}`, error.stack);
-            if (error instanceof NotFoundException) {
-                throw error; // Re-throw the NotFoundException as is
+        if (item.imageFilename) {
+            const filename = item.imageFilename.split('/').pop();
+            if (filename) {
+                const imagePath = join(__dirname, '..', '..', '..', 'uploads', filename);
+
+                // Log the path before attempting to delete
+                this.logger.log(`Attempting to delete file at path: ${imagePath}`);
+
+                // Check if the file exists
+                if (existsSync(imagePath)) {
+                    unlinkSync(imagePath); // Deletes the file from the server
+                    this.logger.log(`File deleted successfully: ${imagePath}`);
+                } else {
+                    this.logger.warn(`File not found at path: ${imagePath}`);
+                }
             } else {
-                throw new InternalServerErrorException(`Failed to delete portfolio item with ID: ${id}`);
+                this.logger.warn(`Could not extract filename from URL: ${item.imageFilename}`);
             }
         }
+
+        await deleteDoc(docRef);
+        this.logger.log(`Portfolio item deleted successfully: ${id}`);
+    } catch (error) {
+        this.logger.error(`Failed to delete portfolio item with ID: ${id}`, error.stack);
+        if (error instanceof NotFoundException) {
+            throw error; // Re-throw the NotFoundException as is
+        } else {
+            throw new InternalServerErrorException(`Failed to delete portfolio item with ID: ${id}`);
+        }
     }
+}
 
 
     /**

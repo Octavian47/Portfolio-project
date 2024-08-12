@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PortfolioItem from '../../components/PortfolioItem/PortfolioItem';
 import ToggleSwitch from '../../components/ToggleSwitch/ToggleSwitch';
-import { getPortfolioItems, deletePortfolioItem } from '../../services/api';
+import { getPortfolioItems, deletePortfolioItem,updatePortfolioItem } from '../../services/api';
 import Sidebar from '../../components/SideBar/Sidebar';
 import './Dashboard.css';
 
@@ -15,8 +15,7 @@ const Dashboard = () => {
     const fetchItems = async () => {
       try {
         const items = await getPortfolioItems();
-        const updatedItems = items.map(item => ({ ...item, visible: true }));
-        setPortfolioItems(updatedItems);
+        setPortfolioItems(items);
       } catch (error) {
         console.error('Failed to fetch portfolio items:', error);
       }
@@ -38,24 +37,39 @@ const Dashboard = () => {
     }
   };
 
-  const toggleVisibility = (id) => {
-    setPortfolioItems(portfolioItems.map(item =>
-      item.id === id ? { ...item, visible: !item.visible } : item
-    ));
+  const toggleVisibility = async (id) => {
+    try {
+      const item = portfolioItems.find(item => item.id === id);
+      const updatedStatus = item.status === 'visible' ? 'hidden' : 'visible';
+  
+      // Update the status in the database
+      await updatePortfolioItem(id, { status: updatedStatus });
+  
+      // Update the UI to reflect the new status
+      setPortfolioItems(portfolioItems.map(item =>
+        item.id === id ? { ...item, status: updatedStatus } : item
+      ));
+    } catch (error) {
+      console.error('Failed to update portfolio item status:', error);
+    }
   };
+  
 
   return (
     <div className="dashboard-container">
-      <div 
+     <div 
         className={`hamburger-menu ${isSidebarOpen ? 'open' : ''}`} 
-        onClick={() => setSidebarOpen(!isSidebarOpen)}
+        onClick={() => {
+          console.log('Hamburger clicked');
+          setSidebarOpen(!isSidebarOpen);
+        }}
       >
         <div></div>
         <div></div>
         <div></div>
       </div>
       
-      <Sidebar className={isSidebarOpen ? 'open' : 'closed'} />
+      <Sidebar className={isSidebarOpen ? 'open' : 'closed'} /> {/* Pass the open class to Sidebar based on state */}
       
       <div className="dashboard-content">
         <div className="portfolio-list">
@@ -73,7 +87,7 @@ const Dashboard = () => {
                 <button onClick={() => handleDelete(item.id)}>Delete</button>
                 <ToggleSwitch
                   id={item.id}
-                  isOn={item.visible}
+                  isOn={item.status === 'visible'}
                   handleToggle={() => toggleVisibility(item.id)}
                 />
               </div>
