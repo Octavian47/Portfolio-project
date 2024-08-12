@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { createPortfolioItem } from '../../services/api';
 import PortfolioForm from '../../components/PortfolioForm/PortfolioForm';
 
-const AddEditPortfolio = () => {
+const AddPortfolio = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState('');  // State to hold the message
   const [status, setStatus] = useState('');    // State to hold the status
@@ -45,4 +45,4 @@ const AddEditPortfolio = () => {
   );
 };
 
-export default AddEditPortfolio;
+export default AddPortfolio;

@@ -1,0 +1,203 @@
+.dashboard {
+  padding: 20px;
+}
+
+.dashboard h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.dashboard-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px; /* Width of the sidebar */
+  background-color: #2e8b57; /* Sidebar background color */
+  padding: 20px;
+  position: fixed; /* Fixes the sidebar position */
+  height: 100%; /* Full height */
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* Scroll if content overflows */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 20px 0; /* Space between sidebar items */
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #225f3d;
+  transform: translateY(-2px);
+}
+
+.sidebar a:active {
+  background-color: #1b4c31;
+  transform: translateY(1px);
+}
+
+.add-button {
+  background-color: #4CAF50; /* Different color for Add button */
+  color: white;
+  padding: 8px 12px; /* Reduced padding for a more compact button */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem; /* Slightly reduced font size */
+  margin-bottom: 20px; /* Space between button and the list */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #3e8b47;
+  transform: translateY(-2px);
+}
+
+.add-button:active {
+  background-color: #1b4c31;
+  transform: translateY(1px);
+}
+
+.dashboard-content {
+  margin-left: 240px; /* Leaves space for the sidebar */
+  padding: 20px;
+  flex-grow: 1; /* Occupy remaining space */
+}
+
+.portfolio-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid layout */
+  gap: 20px; /* Spacing between grid items */
+}
+
+.dashboard-item {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px; /* Reduced gap for more compact button alignment */
+}
+
+.dashboard-buttons button {
+  background-color: #2e8b57;
+  color: white;
+  padding: 6px 10px; /* Reduced padding for a more compact button */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px; /* Reduced font size for better fit */
+}
+
+.dashboard-buttons button:hover {
+  background-color: #225f3d;
+}
+
+.dashboard-buttons .separator {
+  display: inline-block;
+  color: #999;
+  margin: 0 8px; /* Adjust margin as needed */
+  font-size: 16px; /* Adjust the size of the separator */
+}
+
+/* Specific styles for toggle switch, if needed */
+.visible-btn {
+  background-color: #2e8b57;
+}
+
+.hidden-btn {
+  background-color: #ff6347;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%); /* Sidebar is hidden */
+}
+
+.hamburger-menu {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background-color: #2e8b57;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hamburger-menu div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+.hamburger-menu.open div:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.open div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open div:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.sidebar.open {
+  transform: translateX(0); /* Sidebar is visible */
+}
+
+.sidebar.closed {
+  transform: translateX(-100%); /* Sidebar is hidden */
+}
+
+/* Media Queries for Responsive Sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%); /* Initially hidden on small screens */
+  }
+
+  .hamburger-menu {
+    display: block; /* Show hamburger menu on small screens */
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Show sidebar when open */
+  }
+}
+
+@media (min-width: 769px) {
+  .hamburger-menu {
+    display: none; /* Hide hamburger menu on larger screens */
+  }
+
+  .sidebar {
+    transform: translateX(0); /* Always visible on larger screens */
+  }
+}
