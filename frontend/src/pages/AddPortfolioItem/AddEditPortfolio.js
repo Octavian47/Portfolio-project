@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createPortfolioItem } from '../services/api';
-import PortfolioForm from '../components/PortfolioForm/PortfolioForm';
+import { createPortfolioItem } from '../../services/api';
+import PortfolioForm from '../../components/PortfolioForm/PortfolioForm';
 
 const AddEditPortfolio = () => {
   const navigate = useNavigate();

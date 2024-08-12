@@ -30,7 +30,7 @@ import {
         if (!image) {
           return {
             status: 'warning',
-            message: 'Only JPEG images are allowed. No image was uploaded.',
+            message: 'Only JPG images are allowed. No image was uploaded.',
           };
         }
     

@@ -1,0 +1,72 @@
+/* Container for the entire portfolio item */
+.portfolio-item {
+    background-color: #fff;            /* White background for the item */
+    border: 1px solid #ddd;            /* Light gray border */
+    border-radius: 8px;                /* Rounded corners */
+    padding: 16px;                     /* Padding inside the item */
+    margin: 16px;                      /* Margin around the item */
+    text-align: center;                /* Center-align text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+  }
+  
+  /* Image within the portfolio item */
+  .portfolio-image {
+    width: 100%;                       /* Image takes full width of the container */
+    height: auto;                      /* Maintain aspect ratio */
+    border-radius: 8px;                /* Rounded corners for the image */
+    margin-bottom: 16px;               /* Space below the image */
+  }
+  
+  /* Title styling */
+  .portfolio-item h3 {
+    font-size: 1.5em;                  /* Larger font for title */
+    margin-bottom: 8px;                /* Space below the title */
+    color: #333;                       /* Dark gray color for the title */
+  }
+  
+  /* Description styling */
+  .portfolio-item p {
+    font-size: 1em;                    /* Standard font size for description */
+    color: #666;                       /* Medium gray color for description text */
+    margin-bottom: 16px;               /* Space below the description */
+  }
+  
+  /* Link to the client's site */
+  .portfolio-item a {
+    font-size: 1em;                    /* Standard font size for link */
+    color: #007BFF;                    /* Blue color for link */
+    text-decoration: none;             /* Remove underline from link */
+    display: inline-block;             /* Inline-block for hover effects */
+    margin-top: 8px;                   /* Space above the link */
+    transition: color 0.3s ease;       /* Smooth color transition on hover */
+  }
+  
+  /* Hover effects for the link */
+  .portfolio-item a:hover {
+    color: #0056b3;                    /* Darker blue on hover */
+  }
+  
+  /* Hover effects for the entire portfolio item */
+  .portfolio-item:hover {
+    transform: translateY(-5px);       /* Slight lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Deepen shadow on hover */
+  }
+  
+  /* Responsive design: Adjust grid layout for smaller screens */
+  @media (max-width: 600px) {
+    .portfolio-item {
+      margin: 8px;                     /* Reduce margin on small screens */
+      padding: 12px;                   /* Reduce padding on small screens */
+    }
+  
+    .portfolio-item h3 {
+      font-size: 1.2em;                /* Slightly smaller font for title */
+    }
+  
+    .portfolio-item p,
+    .portfolio-item a {
+      font-size: 0.9em;                /* Slightly smaller font for text and links */
+    }
+  }
+  

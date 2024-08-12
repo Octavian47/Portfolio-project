@@ -1,5 +1,5 @@
 import { diskStorage } from 'multer';
-import { extname } from 'path';
+import { extname, join } from 'path';
 import { Request } from 'express';
 
 export const multerConfig = {
@@ -11,6 +11,12 @@ export const multerConfig = {
       const fileExtension = extname(file.originalname);
 
       const filename = `${title}-${date}${fileExtension}`;
+      
+      // Generate the full URL
+      const fullUrl = `${process.env.BASE_URL}/uploads/${filename}`;
+      
+      req.body.imageUrl = fullUrl; // Store the full URL in the request body for later use
+
       callback(null, filename);
     },
   }),

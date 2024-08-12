@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AddEditPortfolio from './pages/AddEditPortfolio';  // Ensure this is correctly implemented
+import AddEditPortfolio from './pages/AddPortfolioItem/AddEditPortfolio';  // Import AddPortfolio component
+import PortfolioList from './pages/PortfolioList/PortfolioList';  // Import PortfolioList component
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         </header>
         <Routes>
           <Route path="/portfolio/add" element={<AddEditPortfolio />} />
+          <Route path="/" element={<PortfolioList />} />  {/* Default route to PortfolioList */}
         </Routes>
       </div>
     </Router>
