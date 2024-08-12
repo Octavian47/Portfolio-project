@@ -1,41 +1,44 @@
 /* Container for the entire portfolio item */
+/* Portfolio Item Container */
 .portfolio-item {
-    background-color: #fff;            /* White background for the item */
-    border: 1px solid #ddd;            /* Light gray border */
-    border-radius: 8px;                /* Rounded corners */
-    padding: 16px;                     /* Padding inside the item */
-    margin: 16px;                      /* Margin around the item */
-    text-align: center;                /* Center-align text */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
-  }
-  
-  /* Image within the portfolio item */
-  .portfolio-image {
-    width: 100%;                       /* Image takes full width of the container */
-    height: auto;                      /* Maintain aspect ratio */
-    border-radius: 8px;                /* Rounded corners for the image */
-    margin-bottom: 16px;               /* Space below the image */
-  }
+  background-color: #fff;             /* White background for the item */
+  border: 1px solid #ddd;             /* Light gray border */
+  border-radius: 8px;                   /* Rounded corners */
+  padding: 16px;                        /* Padding inside the item */
+  margin: 0 auto;                       /* Center the item in the grid cell */
+  text-align: center;                    /* Center-align text */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+  max-width: 100%;                       /* Ensure the item doesn't exceed its container */
+}
+
+/* Portfolio Item Image */
+.portfolio-image {
+  width: 100%;                        /* Image takes full width of the container */
+  max-width: 600px;                   /* Set a max-width for the image */
+  height: auto;                       /* Maintain aspect ratio */
+  border-radius: 8px;                 /* Rounded corners for the image */
+  margin-bottom: 12px;                /* Space below the image */
+}
   
   /* Title styling */
   .portfolio-item h3 {
     font-size: 1.5em;                  /* Larger font for title */
     margin-bottom: 8px;                /* Space below the title */
-    color: #333;                       /* Dark gray color for the title */
+    color: #333;                     /* Dark gray color for the title */
   }
   
   /* Description styling */
   .portfolio-item p {
     font-size: 1em;                    /* Standard font size for description */
-    color: #666;                       /* Medium gray color for description text */
+    color: #666;                     /* Medium gray color for description text */
     margin-bottom: 16px;               /* Space below the description */
   }
   
   /* Link to the client's site */
   .portfolio-item a {
     font-size: 1em;                    /* Standard font size for link */
-    color: #007BFF;                    /* Blue color for link */
+    color: #007BFF;                  /* Blue color for link */
     text-decoration: none;             /* Remove underline from link */
     display: inline-block;             /* Inline-block for hover effects */
     margin-top: 8px;                   /* Space above the link */

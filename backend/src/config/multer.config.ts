@@ -1,28 +1,24 @@
 import { diskStorage } from 'multer';
-import { extname, join } from 'path';
+import { extname } from 'path';
 import { Request } from 'express';
 
 export const multerConfig = {
   storage: diskStorage({
-    destination: './uploads',
+    destination: './uploads', // Save files to the uploads directory
     filename: (req: Request, file, callback) => {
       const title = req.body.title;
       const date = new Date().toISOString().replace(/:/g, '-');
       const fileExtension = extname(file.originalname);
 
+      // Generate a clean filename without special characters
       const filename = `${title}-${date}${fileExtension}`;
-      
-      // Generate the full URL
-      const fullUrl = `${process.env.BASE_URL}/uploads/${filename}`;
-      
-      req.body.imageUrl = fullUrl; // Store the full URL in the request body for later use
 
-      callback(null, filename);
+      callback(null, filename); // Store the clean filename
     },
   }),
   fileFilter: (req, file, callback) => {
-    if (!file.mimetype.match(/\/(jpeg)$/)) {
-      return callback(null, false);  // Reject the file but do not throw an error
+    if (!file.mimetype.match(/\/(jpeg|jpg)$/)) {  // Accept both jpeg and jpg
+      return callback(null, false);  // Reject the file if it's not JPEG
     }
     callback(null, true);
   },

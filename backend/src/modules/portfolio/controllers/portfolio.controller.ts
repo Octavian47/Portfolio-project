@@ -34,10 +34,13 @@ import {
           };
         }
     
-        // Update the imageFilename in the portfolioItem with the uploaded file's path
-        portfolioItem.imageFilename = `/uploads/${image.filename}`;
+      // Construct the full URL based on the stored filename
+      const fullUrl = `${process.env.BASE_URL}/uploads/${image.filename}`;
+      
+      // Update the imageFilename in the portfolioItem with the full URL
+      portfolioItem.imageFilename = fullUrl;
     
-        await this.portfolioService.createPortfolioItem(portfolioItem);
+      await this.portfolioService.createPortfolioItem(portfolioItem);
         return {
           status: 'success',
           message: 'Portfolio item created successfully',
