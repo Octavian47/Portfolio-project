@@ -1,0 +1,17 @@
+/* Header Styling */
+.App-header {
+    background-color: #2e8b57; /* Darker green color */
+    padding: 20px;             /* Reduce padding to make the header smaller */
+    text-align: center;
+  }
+  
+  .App-header h1 {
+    font-size: 2rem;           /* Smaller font size for the header */
+    color: white;              /* White text color for contrast */
+    margin: 0;                 /* Remove default margin */
+  }
+  
+  main {
+    padding: 20px; /* General padding for the content area */
+  }
+  
