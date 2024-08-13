@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import './PortfolioForm.css';
 
 const PortfolioForm = ({ onSubmit, initialData = {} }) => {
   const [title, setTitle] = useState(initialData.title || '');
   const [description, setDescription] = useState(initialData.description || '');
   const [clientUrl, setClientUrl] = useState(initialData.clientUrl || 'https://');
-  const [status, setStatus] = useState(initialData.status || 'display');
+  const [status, setStatus] = useState(initialData.status || 'visible');
   const [imageFile, setImageFile] = useState(null);
 
   const handleSubmit = (e) => {
@@ -55,7 +56,7 @@ const PortfolioForm = ({ onSubmit, initialData = {} }) => {
           onChange={(e) => setStatus(e.target.value)}
           required
         >
-          <option value="display">Display</option>
+          <option value="visible">Display</option>
           <option value="hidden">Hidden</option>
         </select>
       </div>

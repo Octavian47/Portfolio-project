@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPortfolioItem } from '../../services/api';
 import PortfolioForm from '../../components/PortfolioForm/PortfolioForm';
+import Sidebar from '../../components/SideBar/Sidebar';
+import './AddPortfolio.css';
 
 const AddPortfolio = () => {
   const navigate = useNavigate();
+  const [isSidebarOpen, setSidebarOpen] = useState(false); 
   const [message, setMessage] = useState('');  // State to hold the message
   const [status, setStatus] = useState('');    // State to hold the status
 
@@ -17,7 +20,7 @@ const AddPortfolio = () => {
         setStatus(response.status);
         setMessage(response.message);
         setTimeout(() => {
-          //navigate('/portfolio');
+          navigate('/dashboard');
         }, 2000);
       } else {
         // Handle unexpected status
@@ -34,6 +37,7 @@ const AddPortfolio = () => {
 
   return (
     <div>
+      <Sidebar className={isSidebarOpen ? 'open' : 'closed'} /> {/* Pass the open class to Sidebar based on state */}
       <h1>Add New Portfolio Item</h1>
       {message && (
         <div className={`message ${status}`}>

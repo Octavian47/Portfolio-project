@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AddEditPortfolio from './pages/AddPortfolioItem/AddEditPortfolio';  // Import AddPortfolio component
+import AddEditPortfolio from './pages/AddPortfolioItem/AddPortfolio';      // Import AddPortfolio component
 import PortfolioList from './pages/PortfolioList/PortfolioList';           // Import PortfolioList component
 import Layout from './components/Layout/Layout';                           // Import Layout component
 import Dashboard from './pages/Dashboard/Dashboard';                       // Import the Dashboard component        
