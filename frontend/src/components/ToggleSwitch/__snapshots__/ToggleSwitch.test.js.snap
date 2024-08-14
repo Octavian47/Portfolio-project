@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleSwitch Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="toggle-switch-container"
+  >
+    <span
+      class="toggle-label"
+    >
+      Display in Portfolio
+    </span>
+    <span
+      class="toggle-switch"
+    >
+      <input
+        class="toggle-switch-checkbox"
+        id="toggle-switch-test"
+        type="checkbox"
+      />
+      <label
+        class="toggle-switch-label"
+        for="toggle-switch-test"
+      >
+        <span
+          class="toggle-switch-button"
+        />
+      </label>
+    </span>
+  </div>
+</DocumentFragment>
+`;
