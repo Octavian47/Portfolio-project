@@ -1,9 +1,8 @@
 module.exports = {
   transform: {
-    '^.+\\.[tj]sx?$': 'babel-jest', // Use babel-jest to transpile JavaScript and TypeScript files
+    "^.+\\.(js|jsx)$": "babel-jest",
   },
-  transformIgnorePatterns: [
-    '/node_modules/(?!axios).+\\.js$', // Include specific ES modules (axios) to be transformed
-  ],
-  testEnvironment: 'jsdom', // Ensures Jest uses a DOM-like environment
+  moduleFileExtensions: ["js", "jsx"],
+  testEnvironment: "jsdom",
+  transformIgnorePatterns: ["/node_modules/"], 
 };
