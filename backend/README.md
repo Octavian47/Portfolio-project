@@ -38,7 +38,7 @@ Before running this project, ensure you have the following installed:
 Create a `.env` file in the root of your project with the following environment variables:
 
 ```env
-BASE_URL=http://localhost:3000
+BASE_URL=http://localhost:3001
 FIREBASE_PROJECT_ID=your_firebase_project_id
 FIREBASE_CLIENT_EMAIL=your_firebase_client_email
 FIREBASE_PRIVATE_KEY=your_firebase_private_key
@@ -71,7 +71,7 @@ To start the NestJS application in development mode:
 npm run start:dev
 ```
 
-The application will be running at `http://localhost:3000`.
+The application will be running at `http://localhost:3001`.
 
 ## Testing
 
