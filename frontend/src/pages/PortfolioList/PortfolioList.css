@@ -1,63 +1,63 @@
 /* Container for the portfolio list */
 .portfolio-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid layout */
-  gap: 24px;                                                  /* Increased spacing between grid items */
-  padding: 32px;                                              /* Increased padding around the grid */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Responsive grid layout */
+  gap: 24px;                                                    /* Increased spacing between grid items */
+  padding: 32px;                                                /* Increased padding around the grid */
   background-color: #f8f9fa;                                  /* Light background color */
-  border-radius: 8px;                                         /* Rounded corners */
+  border-radius: 8px;                                           /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);                   /* Subtle shadow for a slight elevation */
 }
 
 /* Individual portfolio item styling */
 .portfolio-list .portfolio-item {
   background-color: #ffffff;                                  /* White background for portfolio items */
-  border-radius: 8px;                                         /* Rounded corners for items */
-  overflow: hidden;                                           /* Ensures content stays within rounded corners */
+  border-radius: 8px;                                           /* Rounded corners for items */
+  overflow: hidden;                                             /* Ensures content stays within rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);                   /* Subtle shadow for individual items */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;      /* Smooth transition effects */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;        /* Smooth transition effects */
 }
 
 .portfolio-list .portfolio-item:hover {
-  transform: translateY(-5px);                                /* Lift effect on hover */
+  transform: translateY(-5px);                                  /* Lift effect on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);                 /* Enhanced shadow on hover */
 }
 
 /* Image styling within portfolio items */
 .portfolio-list .portfolio-item img {
-  width: 100%;                                                /* Make images fill the container */
-  height: auto;                                               /* Maintain aspect ratio */
+  width: 100%;                                                  /* Make images fill the container */
+  height: auto;                                                 /* Maintain aspect ratio */
   border-bottom: 1px solid #dee2e6;                           /* Separator between image and content */
 }
 
 /* Content styling within portfolio items */
 .portfolio-list .portfolio-item-content {
-  padding: 16px;                                              /* Padding around the content */
-  text-align: center;                                         /* Center-align text */
+  padding: 16px;                                                /* Padding around the content */
+  text-align: center;                                           /* Center-align text */
 }
 
 .portfolio-list .portfolio-item-title {
-  font-size: 1.25rem;                                         /* Slightly larger title font */
-  font-weight: 600;                                           /* Bold title */
-  margin-bottom: 8px;                                         /* Space below title */
+  font-size: 1.25rem;                                           /* Slightly larger title font */
+  font-weight: 600;                                             /* Bold title */
+  margin-bottom: 8px;                                           /* Space below title */
   color: #343a40;                                             /* Darker text color */
 }
 
 .portfolio-list .portfolio-item-description {
-  font-size: 1rem;                                            /* Standard font size for description */
+  font-size: 1rem;                                              /* Standard font size for description */
   color: #6c757d;                                             /* Gray color for description */
-  margin-bottom: 16px;                                        /* Space below description */
+  margin-bottom: 16px;                                          /* Space below description */
 }
 
 /* Button styling within portfolio items */
 .portfolio-list .portfolio-item-button {
   display: inline-block;
-  padding: 8px 16px;                                          /* Padding for buttons */
+  padding: 8px 16px;                                            /* Padding for buttons */
   background-color: #007bff;                                  /* Primary blue background */
   color: #ffffff;                                             /* White text color */
-  border-radius: 4px;                                         /* Rounded corners for buttons */
-  text-decoration: none;                                      /* Remove underline from links */
-  transition: background-color 0.3s ease;                     /* Smooth transition for background color */
+  border-radius: 4px;                                           /* Rounded corners for buttons */
+  text-decoration: none;                                        /* Remove underline from links */
+  transition: background-color 0.3s ease;                       /* Smooth transition for background color */
 }
 
 .portfolio-list .portfolio-item-button:hover {
@@ -67,7 +67,7 @@
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .portfolio-list {
-      grid-template-columns: 1fr;                             /* Single column layout on small screens */
-      padding: 16px;                                          /* Reduced padding for small screens */
+      grid-template-columns: 1fr;                              /* Single column layout on small screens */
+      padding: 16px;                                           /* Reduced padding for small screens */
   }
 }

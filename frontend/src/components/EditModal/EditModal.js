@@ -1,4 +1,3 @@
-// src/components/EditModal/EditModal.js
 import React from 'react';
 import PortfolioForm from '../PortfolioForm/PortfolioForm';
 import './EditModal.css';

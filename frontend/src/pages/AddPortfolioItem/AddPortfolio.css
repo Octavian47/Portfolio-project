@@ -3,20 +3,20 @@
     display: flex;
     flex-direction: row;
     height: 100vh;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    justify-content: center;                                 /* Center content horizontally */
+    align-items: center;                                     /* Center content vertically */
   }
   
   /* Sidebar styling */
   .sidebar {
-    width: 220px; /* Width of the sidebar */
-    background-color: #2e8b57; /* Sidebar background color */
+    width: 220px;                                            /* Width of the sidebar */
+    background-color: #2e8b57;                             /* Sidebar background color */
     padding: 20px;
-    position: fixed; /* Fixes the sidebar position */
-    height: 100%; /* Full height */
+    position: fixed;                                         /* Fixes the sidebar position */
+    height: 100%;                                            /* Full height */
     top: 0;
     left: 0;
-    overflow-y: auto; /* Scroll if content overflows */
+    overflow-y: auto;                                        /* Scroll if content overflows */
   }
   
   .sidebar ul {
@@ -26,7 +26,7 @@
   }
   
   .sidebar li {
-    margin: 20px 0; /* Space between sidebar items */
+    margin: 20px 0;                                          /* Space between sidebar items */
   }
   
   .sidebar a {
@@ -49,14 +49,14 @@
   }
   
   .add-button {
-    background-color: #4CAF50; /* Different color for Add button */
+    background-color: #4CAF50;                             /* Different color for Add button */
     color: white;
-    padding: 8px 12px; /* Reduced padding for a more compact button */
+    padding: 8px 12px; 
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.9rem; /* Slightly reduced font size */
-    margin-bottom: 20px; /* Space between button and the list */
+    font-size: 0.9rem;                                       /* Slightly reduced font size */
+    margin-bottom: 20px;                                     /* Space between button and the list */
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
   
