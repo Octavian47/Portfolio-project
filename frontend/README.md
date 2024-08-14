@@ -33,10 +33,10 @@ Before you begin, ensure you have the following installed on your machine:
 To get started with the project, you need to clone the repository from GitHub. Run the following commands in your terminal:
 To get started with the project, you need to clone the repository from GitHub. Run the following commands in your terminal:
 
-\`\`\`bash
+```bash
 git clone https://github.com/Octavian47/portfolio-project.git
 cd portfolio-project/frontend
-\`\`\`
+```
 
 ### Install Dependencies
 
