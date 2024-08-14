@@ -42,9 +42,9 @@ cd portfolio-project/frontend
 
 Once you've navigated to the project directory, install the required dependencies using npm:
 
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 This will install all the necessary packages listed in the \`package.json\` file.
 
@@ -52,9 +52,9 @@ This will install all the necessary packages listed in the \`package.json\` file
 
 To start the development server, use the following command:
 
-\`\`\`bash
+```bash
 npm start
-\`\`\`
+```
 
 This command will start the application and open it in your default web browser. The app will be accessible at \`http://localhost:3000/\`.
 
@@ -62,8 +62,8 @@ This command will start the application and open it in your default web browser.
 
 To run the tests for the project, use the following command:
 
-\`\`\`bash
+```bash
 npm test
-\`\`\`
+```
 
 This will run all the tests in watch mode. You can press \`a\` to run all tests or \`q\` to quit the test runner.
