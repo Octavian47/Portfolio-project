@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
+// src/components/PortfolioForm/PortfolioForm.js
+import React, { useState, useEffect } from 'react';
 import './PortfolioForm.css';
 
-const PortfolioForm = ({ onSubmit, initialData = {} }) => {
+const PortfolioForm = ({ initialData = {}, onSubmit }) => {
   const [title, setTitle] = useState(initialData.title || '');
   const [description, setDescription] = useState(initialData.description || '');
   const [clientUrl, setClientUrl] = useState(initialData.clientUrl || 'https://');
   const [status, setStatus] = useState(initialData.status || 'visible');
   const [imageFile, setImageFile] = useState(null);
 
+  useEffect(() => {
+    if (initialData.imageFilename) {
+      setImageFile(initialData.imageFilename);
+    }
+  }, [initialData]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = {
-      title,
-      description,
-      clientUrl,
-      status,
-    };
-    onSubmit(formData, imageFile);
+    onSubmit({ title, description, clientUrl, status, imageFile });
   };
 
   return (
@@ -65,7 +66,6 @@ const PortfolioForm = ({ onSubmit, initialData = {} }) => {
         <input
           type="file"
           onChange={(e) => setImageFile(e.target.files[0])}
-          required
         />
       </div>
       <button type="submit">Save</button>
