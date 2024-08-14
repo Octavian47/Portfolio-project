@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PortfolioItem Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="portfolio-item"
+  >
+    <img
+      alt="Test Title"
+      class="portfolio-image"
+      src="/path/to/image.jpg"
+    />
+    <h3>
+      Test Title
+    </h3>
+    <p>
+      Test Description
+    </p>
+    <a
+      href="https://www.example.com"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Visit Client's Site
+    </a>
+  </div>
+</DocumentFragment>
+`;
