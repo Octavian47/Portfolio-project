@@ -27,15 +27,16 @@ Before you begin, ensure you have the following installed on your machine:
 - **Node.js**: [Download and install Node.js](https://nodejs.org/)
 - **npm**: Node.js comes with npm (Node Package Manager)
 - **Git**: [Download and install Git](https://git-scm.com/)
+- **Postman**
 
 ### Clone the Repository
 
 To get started with the project, you need to clone the repository from GitHub. Run the following commands in your terminal:
-To get started with the project, you need to clone the repository from GitHub. Run the following commands in your terminal:
+
 
 ```bash
 git clone https://github.com/Octavian47/portfolio-project.git
-cd portfolio-project/frontend
+cd frontend
 ```
 
 ### Install Dependencies
@@ -78,3 +79,7 @@ npm test
 ```
 
 This will run all the tests in watch mode. You can press \`a\` to run all tests or \`q\` to quit the test runner.
+
+### Import postman collection in postman
+
+Import in postman the Portfolio.postman_collection.json file, to have an overview of the available endpoints, and test them from there as well.

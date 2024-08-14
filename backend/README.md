@@ -32,6 +32,7 @@ Before running this project, ensure you have the following installed:
 - **NestJS CLI**: [Installation Guide](https://docs.nestjs.com/cli/overview)
 - **Firebase Admin SDK**: Required for Firebase integration.
 - **Multer**: For file uploads.
+- **Postman**
 
 ## Installation
 
@@ -57,8 +58,11 @@ Create a `.env` file in the root of your project with the following environment 
 ```env
 BASE_URL=http://localhost:3000
 FIREBASE_PROJECT_ID=your_firebase_project_id
-FIREBASE_CLIENT_EMAIL=your_firebase_client_email
-FIREBASE_PRIVATE_KEY=your_firebase_private_key
+FIREBASE_API_KEY=your_firebase_private_key
+FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+FIREBASE_APP_ID=your_fire_base_app_id
 ```
 
 Make sure to replace `your_firebase_project_id`, `your_firebase_client_email`, and `your_firebase_private_key` with your actual Firebase credentials.
@@ -92,3 +96,6 @@ npm run build
 This will generate the output in the `dist/` directory.
 
 
+### Import postman collection in postman
+
+Import in postman the Portfolio.postman_collection.json file, to have an overview of the available endpoints, and test them from there as well.
