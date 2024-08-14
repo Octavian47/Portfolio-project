@@ -33,19 +33,6 @@ Before running this project, ensure you have the following installed:
 - **Firebase Admin SDK**: Required for Firebase integration.
 - **Multer**: For file uploads.
 
-## Environment Variables
-
-Create a `.env` file in the root of your project with the following environment variables:
-
-```env
-BASE_URL=http://localhost:3001
-FIREBASE_PROJECT_ID=your_firebase_project_id
-FIREBASE_CLIENT_EMAIL=your_firebase_client_email
-FIREBASE_PRIVATE_KEY=your_firebase_private_key
-```
-
-Make sure to replace `your_firebase_project_id`, `your_firebase_client_email`, and `your_firebase_private_key` with your actual Firebase credentials.
-
 ## Installation
 
 ### Clone the Repository
@@ -63,6 +50,19 @@ Once inside the project directory, install the required dependencies:
 npm install
 ```
 
+### Environment Variables
+
+Create a `.env` file in the root of your project with the following environment variables:
+
+```env
+BASE_URL=http://localhost:3000
+FIREBASE_PROJECT_ID=your_firebase_project_id
+FIREBASE_CLIENT_EMAIL=your_firebase_client_email
+FIREBASE_PRIVATE_KEY=your_firebase_private_key
+```
+
+Make sure to replace `your_firebase_project_id`, `your_firebase_client_email`, and `your_firebase_private_key` with your actual Firebase credentials.
+
 ### Running the Application
 
 To start the NestJS application in development mode:
@@ -71,7 +71,7 @@ To start the NestJS application in development mode:
 npm run start:dev
 ```
 
-The application will be running at `http://localhost:3001`.
+The application will be running at `http://localhost:3000`.
 
 ## Testing
 

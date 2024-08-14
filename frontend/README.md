@@ -48,6 +48,17 @@ npm install
 
 This will install all the necessary packages listed in the \`package.json\` file.
 
+
+### Environment Variables
+
+Create a `.env` file in the root of your project with the following environment variables:
+
+```env
+PORT=3001
+REACT_APP_API_BASE_URL=http://localhost:3000
+```
+
+
 ### Running the Application
 
 To start the development server, use the following command:
@@ -56,7 +67,7 @@ To start the development server, use the following command:
 npm start
 ```
 
-This command will start the application and open it in your default web browser. The app will be accessible at \`http://localhost:3000/\`.
+This command will start the application and open it in your default web browser. The app will be accessible at \`http://localhost:3001/\`.
 
 ### Running Tests
 
