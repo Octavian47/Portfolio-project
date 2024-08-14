@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Portfolio Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a portfolio website built with React. The application allows users to showcase their portfolio items, manage them through a dashboard, and view the live portfolio. The app includes a backend (not covered in this README) for managing the portfolio items via an API.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Dashboard**: Manage your portfolio items. You can add, edit, delete, and toggle the visibility of each item.
+- **Add Portfolio Item**: A dedicated page for adding new portfolio items.
+- **Live Portfolio**: A view-only page where users can see the public portfolio.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Pages & Routes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+| Route                  | Description                                                            |
+|------------------------|------------------------------------------------------------------------|
+| `/`                    | Home page showing the visible portfolio items.                         |
+| `/dashboard`           | Admin dashboard to manage portfolio items.                             |
+| `/portfolio/add`       | Page to add new portfolio items.                                       |    |       |
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+Before you begin, ensure you have the following installed on your machine:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Node.js**: [Download and install Node.js](https://nodejs.org/)
+- **npm**: Node.js comes with npm (Node Package Manager)
+- **Git**: [Download and install Git](https://git-scm.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Clone the Repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To get started with the project, you need to clone the repository from GitHub. Run the following commands in your terminal:
+To get started with the project, you need to clone the repository from GitHub. Run the following commands in your terminal:
 
-### `npm run eject`
+\`\`\`bash
+git clone https://github.com/Octavian47/portfolio-project.git
+cd portfolio-project/frontend
+\`\`\`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Install Dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once you've navigated to the project directory, install the required dependencies using npm:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+\`\`\`bash
+npm install
+\`\`\`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This will install all the necessary packages listed in the \`package.json\` file.
 
-## Learn More
+### Running the Application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To start the development server, use the following command:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+\`\`\`bash
+npm start
+\`\`\`
 
-### Code Splitting
+This command will start the application and open it in your default web browser. The app will be accessible at \`http://localhost:3000/\`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Running Tests
 
-### Analyzing the Bundle Size
+To run the tests for the project, use the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+\`\`\`bash
+npm test
+\`\`\`
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This will run all the tests in watch mode. You can press \`a\` to run all tests or \`q\` to quit the test runner.
