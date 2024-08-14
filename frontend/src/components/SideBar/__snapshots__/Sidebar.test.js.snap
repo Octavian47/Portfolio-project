@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sidebar open"
+  >
+    <button
+      class="close-btn"
+    >
+      ×
+    </button>
+    <ul>
+      <li>
+        <a
+          href="/dashboard"
+        >
+          List of Portfolio Items
+        </a>
+      </li>
+      <li>
+        <a
+          class="add-button"
+          href="/portfolio/add"
+        >
+          Add Portfolio Item
+        </a>
+      </li>
+      <li>
+        <a
+          href="/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Live Portfolio
+        </a>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
