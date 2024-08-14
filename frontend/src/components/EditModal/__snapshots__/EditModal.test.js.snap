@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditModal Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="modal-overlay"
+  >
+    <div
+      class="modal-content"
+    >
+      <h2>
+        Edit Portfolio Item
+      </h2>
+      <form>
+        <input
+          name="title"
+          type="text"
+          value="Existing Title"
+        />
+        <button
+          type="submit"
+        >
+          Save
+        </button>
+      </form>
+      <button>
+        Cancel
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
