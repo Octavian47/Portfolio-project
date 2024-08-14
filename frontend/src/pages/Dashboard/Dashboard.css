@@ -177,27 +177,47 @@
   transform: translateX(-100%); /* Sidebar is hidden */
 }
 
-/* Media Queries for Responsive Sidebar */
+/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%); /* Initially hidden on small screens */
+  .dashboard-container {
+      flex-direction: column; /* Stack sidebar and content vertically */
   }
 
-  .hamburger-menu {
-    display: block; /* Show hamburger menu on small screens */
+  .dashboard-content {
+      margin-left: 0; /* Remove margin to adjust for sidebar */
+      padding: 16px; /* Adjust padding for smaller screens */
+  }
+
+  .sidebar {
+      transform: translateX(-100%); /* Hide sidebar by default */
   }
 
   .sidebar.open {
-    transform: translateX(0); /* Show sidebar when open */
+      transform: translateX(0); /* Show sidebar when open */
+  }
+
+  .hamburger-menu {
+      display: block; /* Show hamburger menu */
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000; /* Make sure it appears on top */
+      background-color: #2e8b57;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+
+  .portfolio-list {
+      grid-template-columns: 1fr; /* Stack items in one column on small screens */
+      gap: 16px;
+      padding: 16px;
   }
 }
 
+/* Larger screens adjustments */
 @media (min-width: 769px) {
   .hamburger-menu {
-    display: none; /* Hide hamburger menu on larger screens */
-  }
-
-  .sidebar {
-    transform: translateX(0); /* Always visible on larger screens */
+      display: none; /* Hide hamburger menu on larger screens */
   }
 }

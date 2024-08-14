@@ -7,7 +7,7 @@ import './AddPortfolio.css';
 
 const AddPortfolio = () => {
   const navigate = useNavigate();
-  const [isSidebarOpen, setSidebarOpen] = useState(false); 
+  const [isSidebarOpen, setSidebarOpen] = useState(false); // State to manage sidebar visibility
   const [message, setMessage] = useState('');  // State to hold the message
   const [status, setStatus] = useState('');    // State to hold the status
 
@@ -33,18 +33,37 @@ const AddPortfolio = () => {
       console.error('Error in form submission:', error);
     }
   };
+
+  const handleSidebarToggle = () => {
+    setSidebarOpen(!isSidebarOpen); // Toggle sidebar visibility state
+  };
   
 
   return (
-    <div>
-      <Sidebar className={isSidebarOpen ? 'open' : 'closed'} /> {/* Pass the open class to Sidebar based on state */}
-      <h1>Add New Portfolio Item</h1>
-      {message && (
-        <div className={`message ${status}`}>
-          <p>{message}</p>
-        </div>
-      )}
-      <PortfolioForm onSubmit={handleFormSubmit} />
+    <div className="add-portfolio-container">
+      <div 
+        className={`hamburger-menu ${isSidebarOpen ? 'open' : ''}`} 
+        onClick={handleSidebarToggle} // Toggle sidebar on hamburger click
+      >
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      
+      <Sidebar 
+        className={isSidebarOpen ? 'open' : ''} 
+        onClose={() => setSidebarOpen(false)} // Pass the close function to Sidebar 
+      />
+      
+      <div className="content">
+        <h1>Add New Portfolio Item</h1>
+        {message && (
+          <div className={`message ${status}`}>
+            <p>{message}</p>
+          </div>
+        )}
+        <PortfolioForm onSubmit={handleFormSubmit} />
+      </div>
     </div>
   );
 };

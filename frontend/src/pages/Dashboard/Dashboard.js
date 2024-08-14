@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import PortfolioItem from '../../components/PortfolioItem/PortfolioItem';
 import ToggleSwitch from '../../components/ToggleSwitch/ToggleSwitch';
 import { getPortfolioItems, deletePortfolioItem,updatePortfolioItem } from '../../services/api';
@@ -9,7 +8,6 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false); // State to manage sidebar visibility
-  const navigate = useNavigate();
   const [portfolioItems, setPortfolioItems] = useState([]);
   const [isModalOpen, setModalOpen] = useState(false); // State to manage modal visibility
   const [selectedItem, setSelectedItem] = useState(null); // State to store the item to be edited
@@ -68,7 +66,6 @@ const Dashboard = () => {
       console.error('Failed to update portfolio item status:', error);
     }
   };
-  
 
   return (
     <div className="dashboard-container">
@@ -77,6 +74,7 @@ const Dashboard = () => {
         onClick={() => {
           console.log('Hamburger clicked');
           setSidebarOpen(!isSidebarOpen);
+          console.log('isSidebarOpen:', !isSidebarOpen);
         }}
       >
         <div></div>
@@ -84,7 +82,10 @@ const Dashboard = () => {
         <div></div>
       </div>
       
-      <Sidebar className={isSidebarOpen ? 'open' : 'closed'} /> {/* Pass the open class to Sidebar based on state */}
+      <Sidebar 
+        className={isSidebarOpen ? 'open' : ''} 
+        onClose={() => setSidebarOpen(false)} // Pass the close function to Sidebar 
+      />
       
       <div className="dashboard-content">
         <div className="portfolio-list">

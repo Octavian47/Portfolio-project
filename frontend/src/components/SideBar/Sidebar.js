@@ -2,9 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Sidebar.css'; // Add styles for the sidebar
 
-const Sidebar = () => {
+// Accept className and onClose as props
+const Sidebar = ({ className, onClose }) => {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${className}`}>
+      <button className="close-btn" onClick={onClose}>
+        &times;
+      </button>
       <ul>
         <li>
           <Link to="/dashboard">List of Portfolio Items</Link>
