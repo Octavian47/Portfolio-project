@@ -1,4 +1,3 @@
-// src/components/PortfolioForm/PortfolioForm.js
 import React, { useState, useEffect } from 'react';
 import './PortfolioForm.css';
 
@@ -23,8 +22,9 @@ const PortfolioForm = ({ initialData = {}, onSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className="portfolio-form">
       <div>
-        <label>Title:</label>
+        <label htmlFor="title">Title:</label>
         <input
+          id="title"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -32,16 +32,18 @@ const PortfolioForm = ({ initialData = {}, onSubmit }) => {
         />
       </div>
       <div>
-        <label>Description:</label>
+        <label htmlFor="description">Description:</label>
         <textarea
+          id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
         />
       </div>
       <div>
-        <label>Client URL:</label>
+        <label htmlFor="clientUrl">Client URL:</label>
         <input
+          id="clientUrl"
           type="url"
           value={clientUrl}
           onChange={(e) => setClientUrl(e.target.value)}
@@ -51,8 +53,9 @@ const PortfolioForm = ({ initialData = {}, onSubmit }) => {
         <small>Please include "https://" or "http://" in the URL.</small>
       </div>
       <div>
-        <label>Status:</label>
+        <label htmlFor="status">Status:</label>
         <select
+          id="status"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
           required
@@ -62,8 +65,9 @@ const PortfolioForm = ({ initialData = {}, onSubmit }) => {
         </select>
       </div>
       <div>
-        <label>Image:</label>
+        <label htmlFor="image">Image:</label>
         <input
+          id="image"
           type="file"
           onChange={(e) => setImageFile(e.target.files[0])}
         />

@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PortfolioForm Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <form
+    class="portfolio-form"
+  >
+    <div>
+      <label
+        for="title"
+      >
+        Title:
+      </label>
+      <input
+        id="title"
+        required=""
+        type="text"
+        value="Initial Title"
+      />
+    </div>
+    <div>
+      <label
+        for="description"
+      >
+        Description:
+      </label>
+      <textarea
+        id="description"
+        required=""
+      >
+        Initial Description
+      </textarea>
+    </div>
+    <div>
+      <label
+        for="clientUrl"
+      >
+        Client URL:
+      </label>
+      <input
+        id="clientUrl"
+        placeholder="https://www.example.com"
+        required=""
+        type="url"
+        value="https://www.example.com"
+      />
+      <small>
+        Please include "https://" or "http://" in the URL.
+      </small>
+    </div>
+    <div>
+      <label
+        for="status"
+      >
+        Status:
+      </label>
+      <select
+        id="status"
+        required=""
+      >
+        <option
+          value="visible"
+        >
+          Display
+        </option>
+        <option
+          value="hidden"
+        >
+          Hidden
+        </option>
+      </select>
+    </div>
+    <div>
+      <label
+        for="image"
+      >
+        Image:
+      </label>
+      <input
+        id="image"
+        type="file"
+      />
+    </div>
+    <button
+      type="submit"
+    >
+      Save
+    </button>
+  </form>
+</DocumentFragment>
+`;
